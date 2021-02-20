@@ -136,14 +136,22 @@
     // 1. Filter the list of inventors for those who were born in the 1500's
 
     // Callback function to filter year values of 1500 - 1599
-    const filterYear = value => value.year >= 1500 && value.year <= 1599;
+    const filterYear = investor => investor.year >= 1500 && investor.year <= 1599;
 
     // Create new array of filtered items that passed the test
     const bornInThe1500s = inventors.filter(filterYear);
-    console.log(bornInThe1500s);
+    console.table(bornInThe1500s);
 
+    
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
+
+    // Callback function to get first and last names
+    const firstAndLastNames = investor => `${investor.first} ${investor.last}`;
+    
+    // Create new array of mapped names
+    const names = inventors.map(firstAndLastNames);
+    console.table(names);
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
