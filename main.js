@@ -140,6 +140,8 @@
 
     // Create new array of filtered items that passed the test
     const bornInThe1500s = inventors.filter(filterYear);
+
+    console.log('Table of investors who were born in the 1500s');
     console.table(bornInThe1500s);
 
     
@@ -147,14 +149,32 @@
     // 2. Give us an array of the inventors first and last names
 
     // Callback function to get first and last names
-    const firstAndLastNames = investor => `${investor.first} ${investor.last}`;
+    const firstAndLastNames = inventor => `${inventor.first} ${inventor.last}`;
     
     // Create new array of mapped names
-    const names = inventors.map(firstAndLastNames);
-    console.table(names);
+    const fullNames = inventors.map(firstAndLastNames);
+
+    console.log('Table of investors with their full names');
+    console.table(fullNames);
+
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
+
+    // Callback function to get birthdates
+    const calculateBirthDates = inventor => inventor.passed - inventor.year;
+
+    // Create new array containing birthdates
+    const birthDates = inventors.map(calculateBirthDates);
+    
+    // Sort array itens from oldest to youngest age
+    const sortFunction = (a, b) => b - a; // To sort array in descending order
+    // const sortFunction = (a, b) => a - b; - To sort array in ascending order
+    const ages = birthDates.sort(sortFunction);
+
+    console.log('Age of investors arranged in descending order');
+    console.table(ages);
+
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
