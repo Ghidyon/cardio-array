@@ -207,24 +207,38 @@
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
     // Getting list of Boulevards in Paris from website
-    const category = document.querySelector('.mw-category');
-    const links = category.querySelectorAll('a'); // Returns a nodelist
+    /* const category = document.querySelector('.mw-category');
+    const links = category.querySelectorAll('a'); // Returns a nodelist */
 
     // Converting a nodelist to an array
     // Using spread operator to transfer nodelist contents into array
-    const boulevards = [...links];
+    // const boulevards = [...links];
 
-    const paris = boulevards
+    // OR using Array.from() converts contents into array
+
+    // const streets = Array.from(links);
+
+    /* const paris = boulevards
                     .map(link => link.textContent)
-                    .filter(boulevard => boulevard.includes('de'));
+                    .filter(boulevard => boulevard.includes('de')); */
     //  when includes() returns true, items containing 'de' are filtered into the new array
 
     // Results of array map
     /* array = ["Boulevards of Paris", "City walls of Paris", "Thiers wall", "Wall of Charles V", "Wall of Philip II Augustus", "City gates of Paris", "Haussmann's renovation of Paris", "Boulevards of the Marshals", "Boulevard Auguste-Blanqui", "Boulevard Barbès", "Boulevard Beaumarchais", "Boulevard de l'Amiral-Bruix", "Boulevard Mortier", "Boulevard Poniatowski", "Boulevard Soult", "Boulevard des Capucines", "Boulevard de la Chapelle", "Boulevard de Clichy", "Boulevard du Crime", "Boulevard du Général-d'Armée-Jean-Simon", "Boulevard Haussmann", "Boulevard de l'Hôpital", "Boulevard des Italiens", "Boulevard Lefebvre", "Boulevard de la Madeleine", "Boulevard de Magenta", "Boulevard Marguerite-de-Rochechouart", "Boulevard Montmartre", "Boulevard du Montparnasse", "Boulevard Raspail", "Boulevard Richard-Lenoir", "Boulevard Saint-Germain", "Boulevard Saint-Michel", "Boulevard de Sébastopol", "Boulevard de Strasbourg", "Boulevard du Temple", "Boulevard Voltaire", "Boulevard de la Zone"] */
 
+    // Results of filtered Array
+    /* array = ["Boulevard de l'Amiral-Bruix", "Boulevard des Capucines", "Boulevard de la Chapelle", "Boulevard de Clichy", "Boulevard de l'Hôpital", "Boulevard des Italiens", "Boulevard de la Madeleine", "Boulevard de Magenta", "Boulevard Marguerite-de-Rochechouart", "Boulevard de Sébastopol", "Boulevard de Strasbourg", "Boulevard de la Zone"] */
+
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    const alphabetically = people.sort((a, b) => {
+        // Using array destructuring to store last and first name variables
+        const [aLastName, aFirstName] = a.split(', ');
+        const [bLastName, bFirstName] = b.split(', ');
+        return aLastName > bLastName ? 1 : -1; // return array in ascending order 
+    })
+    console.table(alphabetically);
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
