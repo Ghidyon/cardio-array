@@ -178,11 +178,11 @@
     // 4. How many years did all the inventors live all together?
 
     // Callback function to sum all birthdays
-    // const sum = (total, value) => total + value; - total refers to the number to start adding to, might input 0 or any other number
-    const calculateBirthdays = (total, inventor) => total + (inventor.passed - inventor.year);
+    // const sum = (accummulator, value) => accummulator + value; - accummulator refers to the number every value adds to, you might input 0 or any other number
+    const calculateBirthdays = (accummulator, inventor) => accummulator + (inventor.passed - inventor.year);
     
     // Sum all birthdays
-    const birthdays = inventors.reduce(calculateBirthdays, 0); // 0 is assigned to total variable above
+    const birthdays = inventors.reduce(calculateBirthdays, 0); // 0 is assigned to accummulator as its initial value
 
     console.log(`All the inventors lived for ${birthdays} years.`);
 
@@ -243,3 +243,7 @@
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+
+    // Counting instances of array values in an object
+
+    const car = data.filter()
