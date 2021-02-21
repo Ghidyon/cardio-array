@@ -141,7 +141,7 @@
     // Create new array of filtered items that passed the test
     const bornInThe1500s = inventors.filter(filterYear);
 
-    console.log('Table of investors who were born in the 1500s');
+    console.log('Table of inventors who were born in the 1500s');
     console.table(bornInThe1500s);
 
     
@@ -154,37 +154,38 @@
     // Create new array of mapped names
     const fullNames = inventors.map(firstAndLastNames);
 
-    console.log('Table of investors with their full names');
+    console.log('Table of inventors with their full names');
     console.table(fullNames);
 
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
-
-    // Callback function to get birthdates
-    const calculateBirthDates = inventor => inventor.passed - inventor.year;
-
-    // Create new array containing birthdates
-    const birthDates = inventors.map(calculateBirthDates);
     
     // Sort array itens from oldest to youngest age
-    const sortFunction = (a, b) => b - a; // To sort array in descending order
+    // const sortFunction = (a, b) => b - a; - To sort array in descending order
     // const sortFunction = (a, b) => a - b; - To sort array in ascending order
-    const ages = birthDates.sort(sortFunction);
+    // Sort birthdate in descending order
+    const sortFunction = (a, b) => a.year < b.year ? 1 : -1; // change < to > if you want to sort in ascending order
 
-    console.log('Age of investors arranged in descending order');
+    // New array of sorted birthdates
+    const ages = inventors.sort(sortFunction);
+
+    console.log('Table of inventors sorted by their birthdates in descending order');
     console.table(ages);
 
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
 
-    // Callback function to sum all array elements
-    const sum = (total, value) => total + value;
+    // Callback function to sum all birthdays
+    // const sum = (total, value) => total + value; - total refers to the number to start adding to, might input 0 or any other number
+    const calculateBirthdays = (total, inventor) => total + (inventor.passed - inventor.year);
     
-    // Sum all array elements and return them.
-    const sumOfYears = birthDates.reduce(sum);
-    console.log(`All the investors lived for ${sumOfYears} years.`);
+    // Sum all birthdays
+    const birthdays = inventors.reduce(calculateBirthdays, 0); // 0 is assigned to total variable above
+
+    console.log(`All the inventors lived for ${birthdays} years.`);
+
 
     // 5. Sort the inventors by years lived
 
