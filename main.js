@@ -159,12 +159,12 @@
 
 
     // Array.prototype.sort()
-    // 3. Sort the inventors by birthdate, oldest to youngest
+    // 3. Sort the inventors by birthdates (year)
     
-    // Sort array itens from oldest to youngest age
+    // Sort array functions
     // const sortFunction = (a, b) => b - a; - To sort array in descending order
     // const sortFunction = (a, b) => a - b; - To sort array in ascending order
-    // Sort birthdate in descending order
+    // Sort birthdates in descending order
     const sortFunction = (a, b) => a.year < b.year ? 1 : -1; // change < to > if you want to sort in ascending order
 
     // New array of sorted birthdates
@@ -189,8 +189,38 @@
 
     // 5. Sort the inventors by years lived
 
+    // Callback function to sort items by years lived in ascending order
+    const calculateYearsLived = (a, b) => {
+        const firstComparism = a.passed - a.year;
+        const secondComparism = b.passed - b.year;
+        return firstComparism > secondComparism ? 1 : -1;
+    }
+
+    // New array of sorted inventors by years lived 
+    const yearsLived = inventors.sort(calculateYearsLived);
+
+    console.log('Table of inventors sorted by years lived in ascending order');
+    console.table(yearsLived);
+
+
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+
+    // Getting list of Boulevards in Paris from website
+    const category = document.querySelector('.mw-category');
+    const links = category.querySelectorAll('a'); // Returns a nodelist
+
+    // Converting a nodelist to an array
+    // Using spread operator to transfer nodelist contents into array
+    const boulevards = [...links];
+
+    const paris = boulevards
+                    .map(link => link.textContent)
+                    .filter(boulevard => boulevard.includes('de'));
+    //  when includes() returns true, items containing 'de' are filtered into the new array
+
+    // Results of array map
+    /* array = ["Boulevards of Paris", "City walls of Paris", "Thiers wall", "Wall of Charles V", "Wall of Philip II Augustus", "City gates of Paris", "Haussmann's renovation of Paris", "Boulevards of the Marshals", "Boulevard Auguste-Blanqui", "Boulevard Barbès", "Boulevard Beaumarchais", "Boulevard de l'Amiral-Bruix", "Boulevard Mortier", "Boulevard Poniatowski", "Boulevard Soult", "Boulevard des Capucines", "Boulevard de la Chapelle", "Boulevard de Clichy", "Boulevard du Crime", "Boulevard du Général-d'Armée-Jean-Simon", "Boulevard Haussmann", "Boulevard de l'Hôpital", "Boulevard des Italiens", "Boulevard Lefebvre", "Boulevard de la Madeleine", "Boulevard de Magenta", "Boulevard Marguerite-de-Rochechouart", "Boulevard Montmartre", "Boulevard du Montparnasse", "Boulevard Raspail", "Boulevard Richard-Lenoir", "Boulevard Saint-Germain", "Boulevard Saint-Michel", "Boulevard de Sébastopol", "Boulevard de Strasbourg", "Boulevard du Temple", "Boulevard Voltaire", "Boulevard de la Zone"] */
 
 
     // 7. sort Exercise
