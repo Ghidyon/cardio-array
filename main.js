@@ -334,5 +334,10 @@
     // Find the comment with this ID
     // delete the comment with the ID of 823423
 
-    const deleteId = comments.filter(comment => comment.id !== 823423);
-    console.log(deleteId);
+    // findIndex() returns the index(position) of the array element that passes a test function
+    const index = comments.findIndex(comment => comment.id === 823423);
+    console.log(index);
+
+    // removes array elements from array using its index position
+    comments.splice(index, 1); // splice(start position of element, number of elements to remove)
+    console.table(comments);
