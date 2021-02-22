@@ -240,10 +240,20 @@
     })
     console.table(alphabetically);
 
+    
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
 
-    // Counting instances of array values in an object
+    // Counting instances of array values in an object using reduce
+    // .reduce((accumulator, value) => acummulator + value, initialValue of accumulator)
+    const instances = data.reduce((object, item) => {
+        if (item in object) { // if item is a property in object
+            object[item]++; // increment item number of occurence
+        } else {
+            object[item] = 1; // add item number of occurence
+        }
+        return object;
+    }, {}); // set initial value to be an empty object therefore making the accumulator an object 
 
-    const car = data.filter()
+    console.log(instances);
