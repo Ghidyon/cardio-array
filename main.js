@@ -338,11 +338,12 @@
     const index = comments.findIndex(comment => comment.id === 823423);
     console.log(index);
 
-    // removes array elements from array using its index position
+    // remove array elements from array using its index position
     /* comments.splice(index, 1); // splice(start position of element, number of elements to remove)
     console.table(comments); */
-    
-    // Slice() is better to use for removing elements because it's immutable
+
+    // slice() is better to use for removing elements because it's immutable, does not alter the value of the array
+    // slice() returns a new array, it does not remove items from the source array
     const newComments = [
         ...comments.slice(0, index), // .slice(start position, stop point but not including element)
         ...comments.slice(index + 1) // .slice(start position till end) returns all elements till end
