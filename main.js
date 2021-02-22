@@ -334,4 +334,5 @@
     // Find the comment with this ID
     // delete the comment with the ID of 823423
 
-    const deleteId = comments.find
+    const deleteId = comments.filter(comment => comment.id !== 823423);
+    console.log(deleteId);
