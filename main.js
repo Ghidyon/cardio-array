@@ -312,10 +312,12 @@
 
     console.log({isAdult});
 
+
     // Array.prototype.every() // is everyone 19 or older?
 
     // every() returns true if every array item passes a test and vice versa
     const isEveryoneAdult = persons.every(person => (new Date()).getFullYear() - person.year >= 19 );
+    // subtract person's year from current year to get person's age, then compare
 
     console.log({isEveryoneAdult});
 
@@ -324,6 +326,12 @@
     // Find is like filter, but instead returns just the one you are looking for
     // find the comment with the ID of 823423
 
+    // find() returns the first array element that passes a test function
+    const findId = comments.find(comment => comment.id == 823423);
+    console.log(findId);
+
     // Array.prototype.findIndex()
     // Find the comment with this ID
     // delete the comment with the ID of 823423
+
+    const deleteId = comments.find
