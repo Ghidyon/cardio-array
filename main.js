@@ -338,7 +338,7 @@
     const index = comments.findIndex(comment => comment.id === 823423);
     console.log(index);
 
-    // remove array elements from array using its index position
+    // splice() removes array elements from array using index
     /* comments.splice(index, 1); // splice(start position of element, number of elements to remove)
     console.table(comments); */
 
